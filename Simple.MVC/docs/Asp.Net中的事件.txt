@@ -1,0 +1,21 @@
+﻿(1)BeginRequest: 开始处理请求
+(2)AuthenticateRequest授权验证请求，获取用户授权信息
+(3):PostAuthenticateRequest获取成功
+(4): AunthorizeRequest 授权，一般来检查用户是否获得权限
+(5):PostAuthorizeRequest:获得授权
+(6):ResolveRequestCache:获取页面缓存结果
+(7):PostResolveRequestCache 已获取缓存   当前请求映射到MvcHandler（pr）：  创建控制器工厂 ，创建控制器，调用action执行，view→response
+//action   Handler : PR()
+(8):PostMapRequestHandler 创建页面对象:创建 最终处理当前http请求的 Handler  实例：  第一从HttpContext中获取当前的PR Handler ，Create
+(9):PreAcquireRequestState 获取Session
+加载Session
+(10)PostAcquireRequestState 获得Session
+(11)PreRequestHandlerExecute:准备执行页面对象执行页面对象的ProcessRequest方法
+(12)PostRequestHandlerExecute 执行完页面对象了
+(13)ReleaseRequestState 释放请求状态
+(14)PostReleaseRequestState 已释放请求状态
+(15)UpdateRequestCache 更新缓存
+(16)PostUpdateRequestCache 已更新缓存
+(17)LogRequest 日志记录
+(18)PostLogRequest 已完成日志
+(19)EndRequest 完成
