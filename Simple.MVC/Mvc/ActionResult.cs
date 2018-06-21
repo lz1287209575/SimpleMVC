@@ -10,6 +10,8 @@ namespace Simple.Mvc
     /// </summary>
     public abstract class ActionResult
     {
+        public RequestContext Context { get; set; }
+
         /// <summary>
         /// ActionResult的执行方法
         /// </summary>

@@ -53,12 +53,15 @@ namespace Simple.Mvc
             }
 
             //创建和请求有关的上下文
-            RequestContext reqContext = new RequestContext() {
+            RequestContext reqContext = new RequestContext {
                 HttpContext = context,
                 RouteData = routes
             };
 
+
+
             ActionResult result = controller.Execute(reqContext);
+            result.Context = reqContext;
             result.Execute(reqContext);
 
             // 已经找到

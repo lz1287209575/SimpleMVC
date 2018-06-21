@@ -28,10 +28,10 @@ namespace Simple.Mvc
 
             //通过ActionName来获取相应的控制器函数
             //利用BindingFlag来进行条件过滤  BindFlags.Public 公共方法  BindingFlags.Instance 实例  BindingFlags.DeclaredOnly  只考虑自身声明，不考虑继承成员
-            MethodInfo[] methods = this.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance |BindingFlags.DeclaredOnly);
+            MethodInfo[] methods = this.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
             MethodInfo method = null;
             //遍历获取到的函数信息，然后进行Action的匹配
-            foreach(MethodInfo item in methods)
+            foreach (MethodInfo item in methods)
             {
                 //进行忽略大小写的比较
                 if (item.Name.Equals(actionName, StringComparison.OrdinalIgnoreCase))
@@ -41,7 +41,7 @@ namespace Simple.Mvc
             }
 
             //进行空值判断
-            if(method == null)
+            if (method == null)
             {
                 //没找到对应的Action，直接报404错误
                 throw new HttpException(404, "Not Found");
@@ -50,7 +50,7 @@ namespace Simple.Mvc
             //参数列表
             List<object> values = new List<object>();
             ParameterInfo[] parameters = method.GetParameters(); //获取所有的参数
-            foreach(ParameterInfo parameter in parameters)
+            foreach (ParameterInfo parameter in parameters)
             {
                 // 参数名称
                 string name = parameter.Name;
@@ -74,9 +74,8 @@ namespace Simple.Mvc
                 }
             }
 
-
             //执行Action  后面附带参数
-            return method.Invoke(this,values.ToArray()) as ActionResult;
+            return method.Invoke(this, values.ToArray()) as ActionResult;
         }
     }
 }

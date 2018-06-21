@@ -33,6 +33,7 @@ namespace Simple.Mvc
             return Content(content, contentType, Encoding.UTF8);
         }
 
+
         /// <summary>
         /// 返回一个ContentResult
         /// </summary>
@@ -78,8 +79,35 @@ namespace Simple.Mvc
         public FileResult File(Stream fileStream, string contentType)
         {
             return new FileResult(fileStream, contentType);
-        } 
+        }
 
+        #endregion
+
+
+        #region 返回View
+
+        public ViewResult View()
+        {
+            return new ViewResult();
+        }
+        
+        public ViewResult View(string viewName)
+        {
+            return new ViewResult(viewName);
+        }
+
+        public ViewResult View(object model)
+        {
+            return new ViewResult(model);
+        }
+
+        public ViewResult View(string viewName,object model)
+        {
+            return new ViewResult(viewName, model);
+        }
+
+        
+        
         #endregion
     }
 }

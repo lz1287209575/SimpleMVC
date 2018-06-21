@@ -21,7 +21,9 @@ namespace Simple.Controllers
             #endregion
 
 
-            return Content("Hahaha");
+            //return Content("Hahaha");
+
+            return View();
         }
     }
 }
